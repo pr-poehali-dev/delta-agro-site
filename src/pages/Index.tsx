@@ -373,7 +373,7 @@ const Index = () => {
               <h4 className="font-bold mb-4">Компания</h4>
               <ul className="space-y-2 text-white/70">
                 <li><a href="#about" className="hover:text-white transition-colors">О нас</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">История</a></li>
+                <li><a href="/history" className="hover:text-white transition-colors">История</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Структура</a></li>
               </ul>
             </div>
