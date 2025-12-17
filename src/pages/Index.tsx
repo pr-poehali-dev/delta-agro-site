@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import VolgoградMap from '@/components/VolgoградMap';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -160,41 +159,52 @@ const Index = () => {
 
       <section className="py-24 bg-muted relative overflow-hidden" ref={setRef('geography')}>
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={isVisible.geography ? 'animate-slide-in-left' : 'opacity-0'}>
-              <h2 className="text-5xl font-bold font-heading mb-6 text-foreground">География присутствия</h2>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Основные площади агрохолдинга расположены в Волгоградской области — одном из ключевых 
-                сельскохозяйственных регионов России.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="MapPin" className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1 text-foreground">Волгоградская область</h4>
-                    <p className="text-muted-foreground">Основной регион деятельности с оптимальными климатическими условиями</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="TrendingUp" className="text-foreground" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg mb-1 text-foreground">Стратегическое расположение</h4>
-                    <p className="text-muted-foreground">Близость к крупным логистическим узлам и потребителям продукции</p>
-                  </div>
-                </div>
+          <div className={`max-w-6xl mx-auto ${isVisible.geography ? 'animate-fade-in' : 'opacity-0'}`}>
+            <div className="text-center mb-16">
+              <div className="inline-block px-4 py-1 bg-primary/10 rounded-full mb-6">
+                <span className="text-sm font-semibold text-primary uppercase tracking-wide">География</span>
               </div>
+              <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-foreground">
+                Масштаб присутствия в регионе
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Наши земли расположены в пяти районах Волгоградской области — одного из крупнейших 
+                сельскохозяйственных регионов России с оптимальными условиями для земледелия
+              </p>
             </div>
-            
-            <div className={isVisible.geography ? 'animate-slide-in-right' : 'opacity-0'}>
-              <img 
-                src="https://cdn.poehali.dev/projects/3658e344-b9b8-473f-8551-015ae358aec7/files/f23ad438-baca-4ce7-9297-0867da0a36ce.jpg" 
-                alt="Инфраструктура" 
-                className="rounded-2xl shadow-2xl"
-              />
+
+            <VolgoградMap />
+
+            <div className="mt-16 grid md:grid-cols-3 gap-8">
+              <Card className="p-8 text-center border-2 hover:border-primary transition-all bg-white">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Map" className="text-primary" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-foreground">Стратегическое расположение</h3>
+                <p className="text-muted-foreground">
+                  Близость к крупным транспортным узлам и рынкам сбыта обеспечивает оперативную логистику
+                </p>
+              </Card>
+
+              <Card className="p-8 text-center border-2 hover:border-primary transition-all bg-white">
+                <div className="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Sun" className="text-secondary" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-foreground">Оптимальный климат</h3>
+                <p className="text-muted-foreground">
+                  Идеальные климатические условия для выращивания зерновых и зернобобовых культур
+                </p>
+              </Card>
+
+              <Card className="p-8 text-center border-2 hover:border-primary transition-all bg-white">
+                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Layers" className="text-accent" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-foreground">Плодородные почвы</h3>
+                <p className="text-muted-foreground">
+                  Чернозёмы и каштановые почвы обеспечивают высокую урожайность и качество продукции
+                </p>
+              </Card>
             </div>
           </div>
         </div>
